@@ -1,0 +1,22 @@
+name: myenv
+channels:
+  - conda-forge
+dependencies:
+- python=3.10.4
+- cudatoolkit=11.6
+- cudnn=8.3.2.44
+- tensorboard
+- pip:
+  # torch
+  - --extra-index-url https://download.pytorch.org/whl/cu116
+  - torch==1.13.1+cu116
+  - torchvision==0.14.1+cu116
+  - torchaudio==0.13.1+cu116
+  # others
+  - openpyxl==3.0.10
+  - numpy==1.22.3
+  - sentencepiece==0.1.97
+  - tensorboardX==2.5.1
+  - scipy==1.10.0
+  # needed by tensorboardX
+  - torch-tb-profiler==0.4.1
