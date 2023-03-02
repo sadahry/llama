@@ -41,11 +41,13 @@ def load(ckpt_dir: str, tokenizer_path: str, local_rank: int, world_size: int) -
     with open(Path(ckpt_dir) / "params.json", "r") as f:
         params = json.loads(f.read())
 
-    model_args: ModelArgs = ModelArgs(max_seq_len=1024, max_batch_size=8, **params)
+    # model_args: ModelArgs = ModelArgs(max_seq_len=1024, max_batch_size=32, **params)
+    model_args: ModelArgs = ModelArgs(max_seq_len=1024, max_batch_size=8, **params)  # light version
     tokenizer = Tokenizer(model_path=tokenizer_path)
     model_args.vocab_size = tokenizer.n_words
     torch.set_default_tensor_type(torch.cuda.HalfTensor)
-    model = Transformer(model_args).cuda().half()
+    # model = Transformer(model_args)
+    model = Transformer(model_args).cuda().half()  # light version
     torch.set_default_tensor_type(torch.FloatTensor)
     model.load_state_dict(checkpoint, strict=False)
 
