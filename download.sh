@@ -4,7 +4,7 @@
 PRESIGNED_URL="$1"  # replace with presigned url from email
 # MODEL_SIZE="7B,13B,30B,65B"  # edit this list with the model sizes you wish to download
 MODEL_SIZE="65B" 
-TARGET_FOLDER="models"             # where all files should end up
+TARGET_FOLDER="downloads"             # where all files should end up
 
 declare -A N_SHARD_DICT
 
